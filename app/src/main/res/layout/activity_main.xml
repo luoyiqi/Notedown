@@ -9,33 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.noah.notes.MainActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Note Title"
-        android:textSize="30dp" />
-
-    <EditText
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:gravity="top"
-        android:id="@+id/editText2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:fadeScrollbars="false"
-        android:layout_below="@+id/editText" />
-
+        android:id="@+id/list"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
