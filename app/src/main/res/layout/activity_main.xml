@@ -3,4 +3,25 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
 android:layout_width="match_parent" android:layout_height="match_parent"
-tools:context=".MainActivity" tools:ignore="MergeRootFrame" />
+tools:context=".MainActivity" tools:ignore="MergeRootFrame"
+    >
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/noteview"></ListView>
+
+    <ImageButton
+        android:id="@+id/add_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:tint="@android:color/white"
+        android:background="@drawable/add"
+        android:src="@android:drawable/ic_input_add"
+        android:onClick="newNote"
+        />
+
+    </FrameLayout>
