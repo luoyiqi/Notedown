@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NoteEdit" />
+        <activity android:name=".NoteEdit" android:launchMode="singleTop" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".RenderedNoteView" android:parentActivityName=".NoteEdit"></activity>
     </application>
 
 </manifest>

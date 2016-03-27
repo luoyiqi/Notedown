@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         noteMap = new HashMap<>(files.length);
         for(int i=0; i<files.length; i++) {
             String name = files[i].getName();
-            Note note = new Note(this, name);
+            Note note = new LocalNote(this, name);
             noteMap.put(name, note);
             web[i] = note;
         }
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                loadNote(web[+position].filename);
+                loadNote(web[+position].getName());
             }
         });
 
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             newfile = new File(getFilesDir(), newname);
         }
         //increment while exists
-        new Note(getApplicationContext(), newname);
+        new LocalNote(getApplicationContext(), newname);
         loadNote(newname);
     }
 

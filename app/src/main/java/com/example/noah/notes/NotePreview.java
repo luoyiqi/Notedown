@@ -23,7 +23,7 @@ public class NotePreview extends ArrayAdapter<String>{
     static public List<String> names(Note[] notes) {
         List<String> nameList = new ArrayList<>();
         for(int i=0;i<notes.length;i++) {
-            nameList.add(notes[i].filename);
+            nameList.add(notes[i].getName());
         }
         return nameList;
     }

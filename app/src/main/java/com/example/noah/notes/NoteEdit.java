@@ -1,6 +1,7 @@
 package com.example.noah.notes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,15 +17,15 @@ public class NoteEdit extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String filename = getIntent().getStringExtra("filename");
         setContentView(R.layout.activity_note_view);
+        String filename = getIntent().getStringExtra("filename");
 
         title = (EditText) findViewById(R.id.edittext_title);
         note = (EditText) findViewById(R.id.edittext_note);
 
-        currentNote = new Note(getApplicationContext(), filename);
+        currentNote = new LocalNote(getApplicationContext(), filename);
 
-        title.setText(currentNote.filename);
+        title.setText(currentNote.getName());
         title.setOnFocusChangeListener(
                 new View.OnFocusChangeListener() {
                     @Override
@@ -32,6 +33,7 @@ public class NoteEdit extends Activity {
                         if (!hasFocus) {
                             String newtitle = title.getText().toString();
                             currentNote.rename(newtitle);
+                            title.setText(currentNote.getName());
                         }
                     }
                 }
@@ -47,6 +49,7 @@ public class NoteEdit extends Activity {
         super.onBackPressed();
         String newtitle = title.getText().toString();
         currentNote.rename(newtitle);
+        currentNote.write(note.getText().toString());
     }
 
     public void loadNote() {
@@ -58,6 +61,8 @@ public class NoteEdit extends Activity {
     }
 
     public void saveNote(View v) {
-        currentNote.write(note.getText().toString());
+        Intent intent = new Intent(getApplicationContext(), RenderedNoteView.class);
+        intent.putExtra("filename", currentNote.getName());
+        startActivity(intent);
     }
 }
