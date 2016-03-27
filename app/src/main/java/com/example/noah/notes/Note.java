@@ -52,6 +52,11 @@ public class Note {
         filename = newname;
     }
 
+    public void delete() {
+        File file = new File(root.getFilesDir(), filename);
+        file.delete();
+    }
+
     public String preview() {
         String previewString = "";
         try {

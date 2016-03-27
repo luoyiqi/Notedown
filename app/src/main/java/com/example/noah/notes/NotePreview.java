@@ -6,19 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NotePreview extends ArrayAdapter<String>{
 
     private final Activity context;
-    private String[] names;
+    private List<String> names;
     private Integer[] imageId;
     private String[] previews;
 
-    static public String[] names(Note[] notes) {
-        String[] nameList = new String[notes.length];
+    static public List<String> names(Note[] notes) {
+        List<String> nameList = new ArrayList<>();
         for(int i=0;i<notes.length;i++) {
-            nameList[i] = notes[i].filename;
+            nameList.add(notes[i].filename);
         }
         return nameList;
     }
@@ -44,8 +49,32 @@ public class NotePreview extends ArrayAdapter<String>{
         TextView txtNote = (TextView) rowView.findViewById(R.id.txt2);
 
         ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
-        txtTitle.setText(names[position]);
+        txtTitle.setText(names.get(position));
         txtNote.setText(previews[position]);
+
+        LinearLayout surface = (LinearLayout) rowView.findViewById(R.id.surface);
+        LinearLayout trash = (LinearLayout) rowView.findViewById(R.id.trash);
+
+        final String name = names.get(position);
+        surface.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (context instanceof MainActivity) {
+                    ((MainActivity) context).loadNote(name);
+                }
+            }
+        });
+
+        trash.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (context instanceof MainActivity) {
+                    ((MainActivity) context).deleteNote(name);
+                }
+            }
+        });
 
         imageView.setImageResource(imageId[position]);
         return rowView;
