@@ -36,7 +36,6 @@
         android:layout_alignRight="@+id/edittext_title"
         android:layout_alignEnd="@+id/edittext_title"
         android:fadeScrollbars="false"
-        android:text="&lt;i>hello&lt;/i>"
         android:layout_below="@+id/buttonSave" />
 
     <Button

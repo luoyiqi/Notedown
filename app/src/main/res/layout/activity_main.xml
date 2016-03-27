@@ -4,12 +4,18 @@
 xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
 android:layout_width="match_parent" android:layout_height="match_parent"
 tools:context=".MainActivity" tools:ignore="MergeRootFrame"
+    android:background="@color/background"
     >
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/noteview"></ListView>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="8dp"
+            android:clipToPadding="false"
+            android:padding="8dip"
+            android:divider="@android:color/transparent"
+            android:id="@+id/noteview"></ListView>
 
     <ImageButton
         android:id="@+id/add_button"

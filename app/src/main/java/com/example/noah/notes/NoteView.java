@@ -23,8 +23,8 @@ public class NoteView extends Activity {
         note = (EditText) findViewById(R.id.edittext_note);
 
         currentNote = new Note(getApplicationContext(), filename);
-        title.setText(currentNote.filename);
 
+        title.setText(currentNote.filename);
         title.setOnFocusChangeListener(
                 new View.OnFocusChangeListener() {
                     @Override
@@ -36,6 +36,8 @@ public class NoteView extends Activity {
                     }
                 }
         );
+
+        note.requestFocus();
 
         loadNote();
     }

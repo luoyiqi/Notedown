@@ -2,6 +2,8 @@ package com.example.noah.notes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         imageId = new Integer[files.length];
         for(int i=0; i<files.length; i++) {
             web[i] = files[i].getName();
-            imageId[i] = R.drawable.diagram;
+            imageId[i] = R.drawable.default_image;
         }
         CustomList adapter = new CustomList(this, web, imageId);
         list=(ListView) findViewById(R.id.noteview);
@@ -46,10 +48,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newNote(View v) {
-        String newtitle = "New Note 1";
+        int count = 1;
+        String newname = "New Note "+Integer.toString(count);
+        File newfile = new File(getFilesDir(), newname);
+        while(newfile.exists()) {
+            count++;
+            newname = "New Note "+Integer.toString(count);
+            newfile = new File(getFilesDir(), newname);
+        }
         //increment while exists
-        new Note(getApplicationContext(), "New Note 1");
-        loadNote("New Note 1");
+        new Note(getApplicationContext(), newname);
+        loadNote(newname);
     }
 
     public void editNote() {
@@ -72,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setTheme();
         refresh();
+    }
+
+
+    public void setTheme() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+        }
     }
 }
