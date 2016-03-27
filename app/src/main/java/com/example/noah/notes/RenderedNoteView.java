@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,20 +21,18 @@ public class RenderedNoteView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rendered_note_view);
 
-        String filename = getIntent().getStringExtra("filename");
+        currentNote = (Note) getIntent().getSerializableExtra("note");
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
         actionBar.setDisplayHomeAsUpEnabled(true);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle(filename);
+        setTitle(currentNote.getName());
 
         noteView = (TextView) findViewById(R.id.renderedText);
 
-        currentNote = new LocalNote(getApplicationContext(), filename);
-
         try {
-            noteView.setText(MarkupRenderer.render(currentNote.read()));
+            noteView.setText(Html.fromHtml(MarkupRenderer.render(currentNote.read(getApplicationContext()))));
         } catch (IOException e) {
             e.printStackTrace();
         }

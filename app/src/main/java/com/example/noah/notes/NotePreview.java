@@ -1,6 +1,7 @@
 package com.example.noah.notes;
 
 import android.app.Activity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class NotePreview extends ArrayAdapter<String>{
         previews = new String[notes.length];
         imageId = new Integer[notes.length];
         for(int i=0;i<notes.length;i++) {
-            previews[i] = notes[i].preview();
+            previews[i] = notes[i].preview(context);
             imageId[i] = R.drawable.diagram;
         }
         names = names(notes);
@@ -50,7 +51,7 @@ public class NotePreview extends ArrayAdapter<String>{
 
         ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
         txtTitle.setText(names.get(position));
-        txtNote.setText(previews[position]);
+        txtNote.setText(Html.fromHtml(previews[position]));
 
         LinearLayout surface = (LinearLayout) rowView.findViewById(R.id.surface);
         LinearLayout trash = (LinearLayout) rowView.findViewById(R.id.trash);

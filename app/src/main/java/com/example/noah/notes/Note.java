@@ -10,15 +10,15 @@ import java.io.Serializable;
  */
 public interface Note extends Serializable {
 
-    public String read() throws IOException;
+    public String read(Context root) throws IOException;
 
-    public void write(String string);
+    public void write(Context root, String string);
 
-    public void rename(String newname);
+    public void rename(Context root, String newname);
 
-    public void delete();
+    public void delete(Context root);
 
-    public String preview();
+    public String preview(Context root);
 
     public String getName();
 

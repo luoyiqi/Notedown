@@ -1,6 +1,5 @@
 package com.example.noah.notes;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -17,8 +16,6 @@ import java.io.InputStreamReader;
 public class LocalNote implements Note {
 
     String filename;
-    FileOutputStream outputStream; /* Writes to a file in app’s internal directory */
-    Context root;
     Integer image;
 
     public String getName() {
@@ -27,11 +24,10 @@ public class LocalNote implements Note {
 
     public LocalNote(Context root, String filename) {
         this.filename = filename;
-        this.root = root;
         image = R.drawable.diagram;
     }
 
-    public String read() throws IOException {
+    public String read(Context root) throws IOException {
         File file = new File(root.getFilesDir(), filename);
         BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String line;
@@ -42,16 +38,16 @@ public class LocalNote implements Note {
         return buffer.toString();
     }
 
-    public void write(String string) {
+    public void write(Context root, String string) {
         try {
-            outputStream = root.openFileOutput(filename , root.MODE_PRIVATE);
+            FileOutputStream outputStream = root.openFileOutput(filename , root.MODE_PRIVATE);
             outputStream.write(string.getBytes()); outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void rename(String newname) {
+    public void rename(Context root, String newname) {
         File fileold = new File(root.getFilesDir(), filename);
         File filenew = new File(root.getFilesDir(), newname);
         if(filenew.exists() == false) {
@@ -64,15 +60,15 @@ public class LocalNote implements Note {
         }
     }
 
-    public void delete() {
+    public void delete(Context root) {
         File file = new File(root.getFilesDir(), filename);
         file.delete();
     }
 
-    public String preview() {
+    public String preview(Context root) {
         String previewString = "";
         try {
-            previewString = read();
+            previewString = MarkupRenderer.render(read(root));
         } catch (IOException e) {
             e.printStackTrace();
         }

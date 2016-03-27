@@ -18,8 +18,6 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    List l = new ArrayList<Note>();
-
     ListView list;
     Note[] web;
     Map<String,Note> noteMap;
@@ -76,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadNote(String filename) {
         Intent intent = new Intent(getApplicationContext(), NoteEdit.class);
-        intent.putExtra("filename", filename);
+        Note newnote = new LocalNote(this, filename);
+        intent.putExtra("note", newnote);
         startActivity(intent);
     }
 
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         adb.setNegativeButton("Cancel", null);
         adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                noteMap.get(filenameFinal).delete();
+                noteMap.get(filenameFinal).delete(getApplicationContext());
                 refresh();
             }
         });
