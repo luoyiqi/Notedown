@@ -10,16 +10,37 @@ import java.util.Arrays;
 public class MarkupRenderer {
 
     static public String render(String markup) {
-        markup = markup.replaceAll("\\*\\*(.*?)\\*\\*","<strong>$1</strong>");
-        markup = markup.replaceAll("\\*(.*?)\\*","<i>$1</i>");
-        markup = markup.replaceAll("\n", "<br />");
+        markup = markup.replaceAll("<br />","\n");
+        markup = markup.replaceAll("\\*\\*([a-zA-Z0-9])(.*?)\\*\\*","<strong>$1$2</strong>");
+        markup = markup.replaceAll("\\*([a-zA-Z0-9])(.*?)\\*","<i>$1$2</i>");
+        markup = markup.replaceAll("(^|\n)####(.*?)($|(?=\n))","$1<b>$2</b>");
+        markup = markup.replaceAll("(^|\n)###(.*?)($|(?=\n))","$1<big><b>$2</b></big>");
+        markup = markup.replaceAll("(^|\n)##(.*?)($|(?=\n))","$1<big><big><b>$2</b></big></big>");
+        markup = markup.replaceAll("(^|\n)#(.*?)($|(?=\n))","$1<big><big><big><big><b>$2</b></big></big></big></big>");
+        markup = markup.replaceAll("\n","<br />");
+        return markup;
+    }
+
+    static public String editor(String markup) {
+        markup = markup.replaceAll("\\*\\*\\*([a-zA-Z0-9])(.*?)\\*\\*\\*","<i><font color='#CF8353'>&#42<strong><font color='#00ADC4'>&#42&#42$1$2&#42&#42</font></strong>&#42</font></i>");
+        markup = markup.replaceAll("\\*\\*([a-zA-Z0-9])(.*?)\\*\\*","<strong><font color='#00ADC4'>&#42&#42$1$2&#42&#42</font></strong>");
+        markup = markup.replaceAll("\\*([a-zA-Z0-9])(.*?)\\*","<i><font color='#CF8353'>*$1$2*</font></i>");
+        markup = markup.replaceAll("(^|\n)####(.*?)($|(?=\n))","$1<b><font color='#7A6AAE'>####$2</font></b>");
+        markup = markup.replaceAll("(^|\n)###(.*?)($|(?=\n))","$1<b><big><font color='#7A6AAE'>###$2</font></big></b>");
+        markup = markup.replaceAll("(^|\n)##(.*?)($|(?=\n))","$1<b><big><big><font color='#7A6AAE'>##$2</font></big></big></b>");
+        markup = markup.replaceAll("(^|\n)#(.*?)($|(?=\n))","$1<b><big><big><big><font color='#7A6AAE'>#$2</font></big></big></big></b>");
+        markup = markup.replaceAll("\n","<br />");
         return markup;
     }
 
     static public String preview(String markup) {
-        //markup = markup.replaceAll("\\*\\*\\*(.*?)\\*\\*\\*","<strong><font color='#00ADC4'>&#42&#42$<i><font color='#CF8353'>&#421&#42</font></i>&#42&#42</font></strong>");
-        markup = markup.replaceAll("\\*\\*(.*?)\\*\\*","<strong><font color='#00ADC4'>&#42&#42$1&#42&#42</font></strong>");
-        markup = markup.replaceAll("\\*(.*?)\\*","<i><font color='#CF8353'>*$1*</font></i>");
+        markup = markup.replaceAll("<br />","\n");
+        markup = markup.replaceAll("\\*\\*([a-zA-Z0-9])(.*?)\\*\\*","<strong>$1$2</strong>");
+        markup = markup.replaceAll("\\*([a-zA-Z0-9])(.*?)\\*","<i>$1$2</i>");
+        markup = markup.replaceAll("(^|\n)####(.*?)($|(?=\n))","$1<b>$2</b>");
+        markup = markup.replaceAll("(^|\n)###(.*?)($|(?=\n))","$1<b>$2</b>");
+        markup = markup.replaceAll("(^|\n)##(.*?)($|(?=\n))","$1<b>$2</b>");
+        markup = markup.replaceAll("(^|\n)#(.*?)($|(?=\n))","$1<b>$2</b>");
         markup = markup.replaceAll("\n","<br />");
         return markup;
     }

@@ -45,12 +45,13 @@ public class NoteEdit extends Activity {
             public void afterTextChanged(Editable s) {
                 String newValue = note.getText().toString();
                 if(!newValue.equals(lastValue)) {
+                    Log.i("HI","still here");
                     lastValue = newValue;
                     Integer start = note.getSelectionStart();
                     Integer stop = note.getSelectionEnd();
-                    note.setText(Html.fromHtml(MarkupRenderer.preview(s.toString())));
+                    note.setText(Html.fromHtml(MarkupRenderer.editor(s.toString())));
                     note.setSelection(start, stop);
-                    currentNote.write(getApplicationContext(), note.getText().toString());
+                    currentNote.write(getApplicationContext(), s.toString().replace("\n","<br />"));
                 }
             }
         };
@@ -85,7 +86,7 @@ public class NoteEdit extends Activity {
 
     public void loadNote() {
         try {
-            note.setText(Html.fromHtml(MarkupRenderer.preview(currentNote.read(getApplicationContext()))));
+            note.setText(Html.fromHtml(MarkupRenderer.editor(currentNote.read(getApplicationContext()))));
         } catch (IOException e) {
             e.printStackTrace();
         }

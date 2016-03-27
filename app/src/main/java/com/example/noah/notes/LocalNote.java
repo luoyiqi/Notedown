@@ -68,7 +68,7 @@ public class LocalNote implements Note {
     public String preview(Context root) {
         String previewString = "";
         try {
-            previewString = MarkupRenderer.render(read(root));
+            previewString = MarkupRenderer.preview(read(root));
         } catch (IOException e) {
             e.printStackTrace();
         }
