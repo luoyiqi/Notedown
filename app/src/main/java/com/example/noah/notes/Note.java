@@ -17,10 +17,12 @@ public class Note {
     String filename;
     FileOutputStream outputStream; /* Writes to a file in app’s internal directory */
     Context root;
+    Integer image;
 
     public Note(Context root, String filename) {
         this.filename = filename;
         this.root = root;
+        image = R.drawable.diagram;
     }
 
     public String read() throws IOException {
@@ -48,6 +50,16 @@ public class Note {
         File filenew = new File(root.getFilesDir(), newname);
         fileold.renameTo(filenew);
         filename = newname;
+    }
+
+    public String preview() {
+        String previewString = "";
+        try {
+            previewString = read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return previewString;
     }
 
 }

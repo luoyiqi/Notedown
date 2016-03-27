@@ -1,17 +1,12 @@
 package com.example.noah.notes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,18 +17,16 @@ public class MainActivity extends AppCompatActivity {
     List l = new ArrayList<Note>();
 
     ListView list;
-    String[] web;
+    Note[] web;
     Integer[] imageId;
 
     public void refresh() {
         File[] files = getFilesDir().listFiles();
-        web = new String[files.length];
-        imageId = new Integer[files.length];
+        web = new Note[files.length];
         for(int i=0; i<files.length; i++) {
-            web[i] = files[i].getName();
-            imageId[i] = R.drawable.default_image;
+            web[i] = new Note(getApplicationContext(), files[i].getName());
         }
-        CustomList adapter = new CustomList(this, web, imageId);
+        NotePreview adapter = new NotePreview(this, web);
         list=(ListView) findViewById(R.id.noteview);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                loadNote(web[+position]);
+                loadNote(web[+position].filename);
             }
         });
 
