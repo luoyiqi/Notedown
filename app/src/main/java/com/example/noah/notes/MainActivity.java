@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadNote(String filename) {
-        Intent intent = new Intent(getApplicationContext(), NoteView.class);
+        Intent intent = new Intent(getApplicationContext(), NoteEdit.class);
         intent.putExtra("filename", filename);
         startActivity(intent);
     }

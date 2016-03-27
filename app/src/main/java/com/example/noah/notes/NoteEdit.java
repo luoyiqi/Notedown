@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import java.io.IOException;
 
-public class NoteView extends Activity {
+public class NoteEdit extends Activity {
 
     Note currentNote;
     EditText title;
@@ -29,7 +29,7 @@ public class NoteView extends Activity {
                 new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
-                        if(!hasFocus) {
+                        if (!hasFocus) {
                             String newtitle = title.getText().toString();
                             currentNote.rename(newtitle);
                         }
@@ -40,6 +40,13 @@ public class NoteView extends Activity {
         note.requestFocus();
 
         loadNote();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        String newtitle = title.getText().toString();
+        currentNote.rename(newtitle);
     }
 
     public void loadNote() {
