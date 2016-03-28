@@ -8,14 +8,19 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#282A35"
+    android:theme="@style/DarkTheme"
     tools:context=".NoteEdit">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+
+        ></android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/button_more"
-        android:id="@+id/linearLayout"
         android:weightSum="1">
 
         <TextView
@@ -61,26 +66,5 @@
 
     </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preview"
-        android:id="@+id/buttonSave"
-        android:onClick="saveNote"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button_more"
-        android:layout_toStartOf="@+id/button_more" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="More"
-        android:id="@+id/button_more"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

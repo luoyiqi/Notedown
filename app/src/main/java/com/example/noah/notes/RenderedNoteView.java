@@ -1,13 +1,9 @@
 package com.example.noah.notes;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -34,7 +30,6 @@ public class RenderedNoteView extends AppCompatActivity {
 
         try {
             String readIn = currentNote.read(getApplicationContext());
-            Log.i("HI",readIn.replace("\n","<br />"));
             noteView.setText(Html.fromHtml(MarkupRenderer.render(readIn)));
         } catch (IOException e) {
             e.printStackTrace();

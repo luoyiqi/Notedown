@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DarkTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#282A35</item>
+        <item name="colorPrimaryDark">#282A35</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionBarStyle">@style/DarkAction</item>
+    </style>
+    <style name="DarkAction" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#282A35</item>
+    </style>
+
 </resources>
