@@ -33,11 +33,11 @@ public class MarkupTest extends ApplicationTestCase<Application> {
 
     @Test
     public void testItalic() {
-        String testString = "**This is bold**, **this isn't.";
+        String testString = "*This is italics*, **this isn't.";
         String newString = MarkupRenderer.render(testString);
 
         // Render
-        String expectedString = "<strong>This is bold</strong>, **this isn't.";
+        String expectedString = "<i>This is italics</i>, **this isn't.";
         assertEquals(newString, expectedString);
 
         // Edit
