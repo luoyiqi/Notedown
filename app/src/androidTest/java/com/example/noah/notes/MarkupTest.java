@@ -89,7 +89,7 @@ public class MarkupTest extends ApplicationTestCase<Application> {
 
         // Preview
         String newString3 = MarkupRenderer.preview(testString);
-        String expectedString3 = "<b> Title</b>";
+        String expectedString3 = "![desc](link)";
         assertEquals(newString3, expectedString3);
     }
 }
