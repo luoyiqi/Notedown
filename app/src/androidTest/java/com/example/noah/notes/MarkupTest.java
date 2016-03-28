@@ -24,26 +24,32 @@ public class MarkupTest extends ApplicationTestCase<Application> {
 
         // Edit
         String newString2 = MarkupRenderer.editor(testString);
-        String expectedString2 = "<strong>*This is bold*</strong>, **this isn't.";
+        String expectedString2 = "<strong>**This is bold**</strong>, **this isn't.";
         assertEquals(newString2, expectedString2);
 
         // Preview
-        /***/
+        String newString3 = MarkupRenderer.preview(testString);
+        String expectedString3 = "<strong>This is bold</strong>, **this isn't.";
+        assertEquals(newString3, expectedString3);
     }
 
     @Test
     public void testItalic() {
         String testString = "*This is italics*, **this isn't.";
-        String newString = MarkupRenderer.render(testString);
 
         // Render
-        String expectedString = "<i>This is italics</i>, **this isn't.";
+        String newString = MarkupRenderer.render(testString);
+        String expectedString = "<i>This is bold</i>, **this isn't.";
         assertEquals(newString, expectedString);
 
         // Edit
-        /***/
+        String newString2 = MarkupRenderer.editor(testString);
+        String expectedString2 = "<i>*This is italics*</i>, **this isn't.";
+        assertEquals(newString2, expectedString2);
 
         // Preview
-        /***/
+        String newString3 = MarkupRenderer.preview(testString);
+        String expectedString3 = "<i>This is italics</i>, **this isn't.";
+        assertEquals(newString3, expectedString3);
     }
 }
