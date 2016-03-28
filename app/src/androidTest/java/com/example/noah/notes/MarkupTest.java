@@ -72,4 +72,24 @@ public class MarkupTest extends ApplicationTestCase<Application> {
         String expectedString3 = "<b> Title</b>";
         assertEquals(newString3, expectedString3);
     }
+
+    @Test
+    public void testImage() {
+        String testString = "![desc](link)";
+
+        // Render
+        String newString = MarkupRenderer.render(testString);
+        String expectedString = "<img src=\"link\" />";
+        assertEquals(newString, expectedString);
+
+        // Edit
+        String newString2 = MarkupRenderer.editor(testString);
+        String expectedString2 = "<font color='#7DC962'>![<strong>desc</strong>](link)</font>";
+        assertEquals(newString2, expectedString2);
+
+        // Preview
+        String newString3 = MarkupRenderer.preview(testString);
+        String expectedString3 = "<b> Title</b>";
+        assertEquals(newString3, expectedString3);
+    }
 }
