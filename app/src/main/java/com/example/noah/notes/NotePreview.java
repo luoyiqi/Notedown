@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,11 @@ public class NotePreview extends ArrayAdapter<String>{
     private Integer[] imageId;
     private String[] previews;
 
+    /**
+     * Generate the List of names for the adapter
+     * @param notes
+     * @return
+     */
     static public List<String> names(Note[] notes) {
         List<String> nameList = new ArrayList<>();
         for(int i=0;i<notes.length;i++) {
@@ -37,7 +41,7 @@ public class NotePreview extends ArrayAdapter<String>{
         imageId = new Integer[notes.length];
         for(int i=0;i<notes.length;i++) {
             previews[i] = notes[i].preview(context);
-            imageId[i] = R.drawable.diagram;
+            imageId[i] = R.drawable.note3;
         }
         names = names(notes);
 
@@ -56,6 +60,7 @@ public class NotePreview extends ArrayAdapter<String>{
         LinearLayout surface = (LinearLayout) rowView.findViewById(R.id.surface);
         LinearLayout trash = (LinearLayout) rowView.findViewById(R.id.trash);
 
+        // Check for clicks to open the note
         final String name = names.get(position);
         surface.setOnClickListener(new View.OnClickListener() {
 
@@ -67,6 +72,7 @@ public class NotePreview extends ArrayAdapter<String>{
             }
         });
 
+        // Check for clicks to delete the note
         trash.setOnClickListener(new View.OnClickListener() {
 
             @Override

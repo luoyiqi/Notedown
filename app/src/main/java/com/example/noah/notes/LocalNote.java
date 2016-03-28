@@ -27,6 +27,12 @@ public class LocalNote implements Note {
         image = R.drawable.diagram;
     }
 
+    /**
+     * Reads the note
+     * @param root The context used to access to file.
+     * @return The contents of the note
+     * @throws IOException If the note doesn't exist
+     */
     public String read(Context root) throws IOException {
         File file = new File(root.getFilesDir(), filename);
         BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
@@ -38,6 +44,11 @@ public class LocalNote implements Note {
         return buffer.toString();
     }
 
+    /**
+     * Writes to the note.
+     * @param root The context used to access to file.
+     * @param string The string to write.
+     */
     public void write(Context root, String string) {
         try {
             FileOutputStream outputStream = root.openFileOutput(filename , root.MODE_PRIVATE);
@@ -47,9 +58,16 @@ public class LocalNote implements Note {
         }
     }
 
+    /**
+     * Renames the note
+     * @param root The context used to access to file.
+     * @param newname The new name.
+     */
     public void rename(Context root, String newname) {
         File fileold = new File(root.getFilesDir(), filename);
         File filenew = new File(root.getFilesDir(), newname);
+
+        // Check if name is already used.
         if(filenew.exists() == false) {
             fileold.renameTo(filenew);
             filename = newname;
@@ -60,11 +78,20 @@ public class LocalNote implements Note {
         }
     }
 
+    /**
+     * Delete the note.
+     * @param root The context used to access to file.
+     */
     public void delete(Context root) {
         File file = new File(root.getFilesDir(), filename);
         file.delete();
     }
 
+    /**
+     * Generate a preview string of the note.
+     * @param root The context used to access to file.
+     * @return The generated preview.
+     */
     public String preview(Context root) {
         String previewString = "";
         try {

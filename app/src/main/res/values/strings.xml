@@ -4,4 +4,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+
+    <string name="new_note">New Note </string>
+    <string name="delete_title">Delete?</string>
+    <string name="delete_body">Are you sure you want to delete </string>
+
+    <string name="confirm">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="edit_note">"Edit Note"</string>
+
+    <string name="new_image">New Image</string>
 </resources>

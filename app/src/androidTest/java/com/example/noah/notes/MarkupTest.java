@@ -2,6 +2,7 @@ package com.example.noah.notes;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
+import android.test.suitebuilder.annotation.LargeTest;
 
 import org.junit.Test;
 

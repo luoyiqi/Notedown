@@ -1,13 +1,20 @@
 package com.example.noah.notes;
 
-import android.util.Log;
-
 /**
  * Created by Noah on 27/03/2016.
  */
 public class MarkupRenderer {
 
+    /**
+     * Generate HTML for a proper render
+     * @param markup The string to parse
+     * @return The ouput string
+     */
     static public String render(String markup) {
+
+        // A simple Regex-based Markdown renderer
+        // TODO: Create pairs of patterns and replacements, iterating through the list to call replaceAll on it.
+
         markup = markup.replaceAll("&nbsp;"," ");
         markup = markup.replaceAll("<br />","\n");
         markup = markup.replaceAll("\\*\\*([a-zA-Z0-9])(.*?)\\*\\*","<strong>$1$2</strong>");
@@ -23,6 +30,11 @@ public class MarkupRenderer {
         return markup;
     }
 
+    /**
+     * Generate HTML for the EditText
+     * @param markup The string to parse
+     * @return The ouput string
+     */
     static public String editor(String markup) {
         markup = markup.replaceAll("&nbsp;"," ");
         markup = markup.replaceAll("<br />","\n");
@@ -40,6 +52,11 @@ public class MarkupRenderer {
         return markup;
     }
 
+    /**
+     * Generate HTML for the previews
+     * @param markup The string to parse
+     * @return The ouput string
+     */
     static public String preview(String markup) {
         markup = markup.replaceAll("&nbsp;"," ");
         markup = markup.replaceAll("<br />","\n");

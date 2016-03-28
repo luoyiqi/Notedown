@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#282A35"
     android:theme="@style/DarkTheme"
-    tools:context=".NoteEdit">
+    tools:context=".EditNoteViewController">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -26,6 +27,26 @@ dependencies {
     compile 'com.android.support:support-v4:23.2.0'
     compile 'com.android.support:recyclerview-v7:21.0.0'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
+    androidTestCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.0'
+
+    // Android JUnit Runner
+    androidTestCompile 'com.android.support.test:runner:0.5'
+
+// JUnit4 Rules
+    androidTestCompile 'com.android.support.test:rules:0.5'
+
+// Espresso core
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+// Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
+// Espresso-web for WebView support
+    androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
+// Espresso-idling-resource for synchronization with background jobs
+    androidTestCompile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
     androidTestCompile 'junit:junit:4.12'
     testCompile 'junit:junit:4.12'
 }
