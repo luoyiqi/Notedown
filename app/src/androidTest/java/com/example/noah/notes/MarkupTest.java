@@ -24,7 +24,7 @@ public class MarkupTest extends ApplicationTestCase<Application> {
 
         // Edit
         String newString2 = MarkupRenderer.editor(testString);
-        String expectedString2 = "<strong>**This is bold**</strong>, **this isn't.";
+        String expectedString2 = "<strong><font color='#00ADC4'>&#42&#42This is bold&#42&#42</font></strong>, **this isn't.";
         assertEquals(newString2, expectedString2);
 
         // Preview
@@ -39,12 +39,12 @@ public class MarkupTest extends ApplicationTestCase<Application> {
 
         // Render
         String newString = MarkupRenderer.render(testString);
-        String expectedString = "<i>This is bold</i>, **this isn't.";
+        String expectedString = "<i>This is italics</i>, **this isn't.";
         assertEquals(newString, expectedString);
 
         // Edit
         String newString2 = MarkupRenderer.editor(testString);
-        String expectedString2 = "<i>*This is italics*</i>, **this isn't.";
+        String expectedString2 = "<i><font color='#CF8353'>*This is italics*</font></i>, **this isn't.";
         assertEquals(newString2, expectedString2);
 
         // Preview
