@@ -20,19 +20,19 @@ public class LocalNoteTest extends ApplicationTestCase<Application> {
         Context context = getContext();
 
         // Create
-        Note local = new LocalNote(context, "testLocalNote");
+        Note note = new LocalNote(context, "testLocalNote");
 
         // Rename
-        local.rename(context, "testLocalNote2");
+        note.rename(context, "testLocalNote2");
 
         // Write
-        local.write(context, "hello");
+        note.write(context, "hello");
 
         // Read
-        try { assertEquals("hello", local.read(context));}
+        try { assertEquals("hello", note.read(context));}
         catch (IOException e) { e.printStackTrace(); }
 
         // Delete
-        local.delete(context);
+        note.delete(context);
     }
 }

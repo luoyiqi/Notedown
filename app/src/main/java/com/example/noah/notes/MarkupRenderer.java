@@ -33,6 +33,7 @@ public class MarkupRenderer {
         markup = markup.replaceAll("(^|\n)###(.*?)($|(?=\n))","$1<b><big><font color='#7A6AAE'>###$2</font></big></b>");
         markup = markup.replaceAll("(^|\n)##(.*?)($|(?=\n))","$1<b><big><big><font color='#7A6AAE'>##$2</font></big></big></b>");
         markup = markup.replaceAll("(^|\n)#(.*?)($|(?=\n))","$1<b><big><big><big><font color='#7A6AAE'>#$2</font></big></big></big></b>");
+        markup = markup.replaceAll("!\\[(.*?)\\]\\((.*?)\\)","<font color='#7DC962'>![<strong>$1</strong>]($2)</font>");
         markup = markup.replaceAll("(^|\n) ","$1&nbsp;");
         markup = markup.replaceAll("  ","&nbsp;&nbsp;");
         markup = markup.replaceAll("\n","<br />");

@@ -47,11 +47,11 @@ public class RenderedNoteView extends AppCompatActivity {
                     Log.i(":P!!!",source);
 
                     Drawable d;
-                    Uri yourUri = Uri.parse(source);
                     try {
+                        Uri yourUri = Uri.parse(source);
                         InputStream inputStream = getContentResolver().openInputStream(yourUri);
                         d = Drawable.createFromStream(inputStream, yourUri.toString() );
-                    } catch (FileNotFoundException e) {
+                    } catch (Exception e) {
                         d = getResources().getDrawable(R.drawable.default_image);
                     }
 

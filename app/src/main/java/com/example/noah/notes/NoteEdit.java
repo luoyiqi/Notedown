@@ -132,16 +132,10 @@ public class NoteEdit extends AppCompatActivity {
     }
 
     public boolean addPhoto(MenuItem item) {
-        Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        getIntent.setType("image/*");
-
-        Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        pickIntent.setType("image/*");
-
-        Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
-
-        startActivityForResult(chooserIntent, PICK_IMAGE);
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
         return true;
     }
 
@@ -154,7 +148,7 @@ public class NoteEdit extends AppCompatActivity {
 
                 Uri selectedImage = data.getData();
 
-                note.getText().insert(note.getSelectionStart(), "[New Image]("+selectedImage.toString()+")");
+                note.getText().insert(note.getSelectionStart(), "![New Image]("+selectedImage.toString()+")");
             }
         }
     }
