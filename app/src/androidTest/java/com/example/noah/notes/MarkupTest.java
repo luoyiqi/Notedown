@@ -52,4 +52,24 @@ public class MarkupTest extends ApplicationTestCase<Application> {
         String expectedString3 = "<i>This is italics</i>, **this isn't.";
         assertEquals(newString3, expectedString3);
     }
+
+    @Test
+    public void testTitle() {
+        String testString = "# Title";
+
+        // Render
+        String newString = MarkupRenderer.render(testString);
+        String expectedString = "<big><big><big><big><b> Title</b></big></big></big></big>";
+        assertEquals(newString, expectedString);
+
+        // Edit
+        String newString2 = MarkupRenderer.editor(testString);
+        String expectedString2 = "<b><big><big><big><font color='#7A6AAE'># Title</font></big></big></big></b>";
+        assertEquals(newString2, expectedString2);
+
+        // Preview
+        String newString3 = MarkupRenderer.preview(testString);
+        String expectedString3 = "<b> Title</b>";
+        assertEquals(newString3, expectedString3);
+    }
 }
