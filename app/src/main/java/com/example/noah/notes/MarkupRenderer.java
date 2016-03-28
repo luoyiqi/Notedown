@@ -19,6 +19,7 @@ public class MarkupRenderer {
 
     static public String editor(String markup) {
         markup = markup.replaceAll("&nbsp;"," ");
+        markup = markup.replaceAll("<br />","\n");
         markup = markup.replaceAll("\\*\\*\\*([a-zA-Z0-9])(.*?)\\*\\*\\*","<i><font color='#CF8353'>&#42<strong><font color='#00ADC4'>&#42&#42$1$2&#42&#42</font></strong>&#42</font></i>");
         markup = markup.replaceAll("\\*\\*([a-zA-Z0-9])(.*?)\\*\\*","<strong><font color='#00ADC4'>&#42&#42$1$2&#42&#42</font></strong>");
         markup = markup.replaceAll("\\*([a-zA-Z0-9])(.*?)\\*","<i><font color='#CF8353'>*$1$2*</font></i>");
@@ -27,7 +28,9 @@ public class MarkupRenderer {
         markup = markup.replaceAll("(^|\n)##(.*?)($|(?=\n))","$1<b><big><big><font color='#7A6AAE'>##$2</font></big></big></b>");
         markup = markup.replaceAll("(^|\n)#(.*?)($|(?=\n))","$1<b><big><big><big><font color='#7A6AAE'>#$2</font></big></big></big></b>");
         markup = markup.replaceAll("\n","<br />");
-        markup = markup.replaceAll(" ","&nbsp;");
+        markup = markup.replaceAll("^ ","&nbsp;");
+        markup = markup.replaceAll("\n ","\n&nbsp;");
+        markup = markup.replaceAll("  ","&nbsp;&nbsp;");
         return markup;
     }
 

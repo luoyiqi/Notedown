@@ -69,7 +69,8 @@ public class NoteEdit extends AppCompatActivity {
                     lastValue = newValue;
                     Integer start = note.getSelectionStart();
                     Integer stop = note.getSelectionEnd();
-                    Log.i("HI","'"+Html.fromHtml("  ").toString()+"'");
+                    Log.i("HI","'"+Html.fromHtml(" a".replaceAll("(^|\n)  ","$0&nbsp;")).toString()+"'");
+                    Log.i("HI","'"+" a".replaceAll("(^|\n) ","$0&nbsp;")+"'");
                     Log.i("HI","'"+s.toString()+"'");
                     Log.i("HI","'"+MarkupRenderer.editor(s.toString())+"'");
                     note.setText(Html.fromHtml(MarkupRenderer.editor(s.toString())));
