@@ -10,9 +10,11 @@
         notes:showAsAction="always"
         />
     <item
-        android:id="@+id/action_other"
+        android:id="@+id/action_image"
         android:orderInCategory="100"
-        android:title="Other"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Add image"
+        android:onClick="addPhoto"
         notes:showAsAction="never"
         />
 </menu>

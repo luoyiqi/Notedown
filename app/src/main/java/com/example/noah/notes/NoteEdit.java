@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -17,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -25,6 +28,8 @@ public class NoteEdit extends AppCompatActivity {
     Note currentNote;
     EditText title;
     EditText note;
+
+    static final int PICK_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +74,6 @@ public class NoteEdit extends AppCompatActivity {
                     lastValue = newValue;
                     Integer start = note.getSelectionStart();
                     Integer stop = note.getSelectionEnd();
-                    //Log.i("HI","'"+Html.fromHtml(" a".replaceAll("(^|\n)  ","$0&nbsp;")).toString()+"'");
-                    Log.i("HI","'"+MarkupRenderer.editor(" a\nc\n  b")+"'");
-                    Log.i("HI","'"+Html.fromHtml(MarkupRenderer.editor(" a\n  b")).toString()+"'");
-                    //Log.i("HI","'"+s.toString()+"'");
-                    //Log.i("HI","'"+MarkupRenderer.editor(s.toString())+"'");
                     note.setText(Html.fromHtml(MarkupRenderer.editor(s.toString())));
                     note.setSelection(start, stop);
                     currentNote.write(getApplicationContext(), s.toString().replace("\n","<br />"));
@@ -130,4 +130,33 @@ public class NoteEdit extends AppCompatActivity {
         startActivity(intent);
         return true;
     }
+
+    public boolean addPhoto(MenuItem item) {
+        Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        getIntent.setType("image/*");
+
+        Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        pickIntent.setType("image/*");
+
+        Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
+
+        startActivityForResult(chooserIntent, PICK_IMAGE);
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == PICK_IMAGE) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+
+                Uri selectedImage = data.getData();
+
+                note.getText().insert(note.getSelectionStart(), "[New Image]("+selectedImage.toString()+")");
+            }
+        }
+    }
+
 }

@@ -12,10 +12,11 @@ public class MarkupRenderer {
         markup = markup.replaceAll("<br />","\n");
         markup = markup.replaceAll("\\*\\*([a-zA-Z0-9])(.*?)\\*\\*","<strong>$1$2</strong>");
         markup = markup.replaceAll("\\*([a-zA-Z0-9])(.*?)\\*","<i>$1$2</i>");
-        markup = markup.replaceAll("(^|\n)#### ?(.*?)($|(?=\n))","$1<b>$2</b>");
-        markup = markup.replaceAll("(^|\n)### ?(.*?)($|(?=\n))","$1<big><b>$2</b></big>");
-        markup = markup.replaceAll("(^|\n)## ?(.*?)($|(?=\n))","$1<big><big><b>$2</b></big></big>");
-        markup = markup.replaceAll("(^|\n)# ?(.*?)($|(?=\n))","$1<big><big><big><big><b>$2</b></big></big></big></big>");
+        markup = markup.replaceAll("(^|\n)####(.*?)($|(?=\n))","$1<b>$2</b>");
+        markup = markup.replaceAll("(^|\n)###(.*?)($|(?=\n))","$1<big><b>$2</b></big>");
+        markup = markup.replaceAll("(^|\n)##(.*?)($|(?=\n))","$1<big><big><b>$2</b></big></big>");
+        markup = markup.replaceAll("(^|\n)#(.*?)($|(?=\n))","$1<big><big><big><big><b>$2</b></big></big></big></big>");
+        markup = markup.replaceAll("!\\[(.*?)\\]\\((.*?)\\)","<img src=\"$2\" />");
         markup = markup.replaceAll("(^|\n) ","$1&nbsp;");
         markup = markup.replaceAll("  ","&nbsp;&nbsp;");
         markup = markup.replaceAll("\n","<br />");
