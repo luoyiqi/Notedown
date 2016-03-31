@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void newNote(View v) {
         int count = 1;
-        String newname = R.string.new_note+Integer.toString(count);
+        String newname = getText(R.string.new_note)+Integer.toString(count);
         File newfile = new File(getFilesDir(), newname);
 
         // Increment name while file already exists
         while(newfile.exists()) {
             count++;
-            newname = R.string.new_note+Integer.toString(count);
+            newname = getText(R.string.new_note)+Integer.toString(count);
             newfile = new File(getFilesDir(), newname);
         }
         new LocalNote(getApplicationContext(), newname);
@@ -107,18 +107,17 @@ public class MainActivity extends AppCompatActivity {
      */
     public void deleteNote(String filename) {
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle(R.string.delete_title);
-        adb.setMessage(R.string.delete_body + filename + "?");
+        adb.setTitle(getText(R.string.delete_title));
+        adb.setMessage(getText(R.string.delete_body) + filename + "?");
         final String filenameFinal = filename;
-        adb.setNegativeButton(R.string.cancel, null);
-        adb.setPositiveButton(R.string.confirm, new AlertDialog.OnClickListener() {
+        adb.setNegativeButton(getText(R.string.cancel), null);
+        adb.setPositiveButton(getText(R.string.confirm), new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 noteMap.get(filenameFinal).delete(getApplicationContext());
                 refresh();
             }
         });
         adb.show();
-
     }
 
     /**
