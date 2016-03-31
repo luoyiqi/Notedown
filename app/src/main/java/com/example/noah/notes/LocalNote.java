@@ -9,6 +9,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by nosha on 20/03/2016.
@@ -51,6 +54,9 @@ public class LocalNote implements Note {
      */
     public void write(Context root, String string) {
         try {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+            Date date = new Date();
+            string = string.replace("insertdate", dateFormat.format(date));
             FileOutputStream outputStream = root.openFileOutput(filename , root.MODE_PRIVATE);
             outputStream.write(string.getBytes()); outputStream.close();
         } catch (Exception e) {
