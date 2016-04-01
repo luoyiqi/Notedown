@@ -43,7 +43,7 @@ public class EditNoteViewController extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitle(R.string.edit_note);
+        setTitle(getText(R.string.edit_note));
 
         // Set colors
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.gray)));
@@ -185,7 +185,7 @@ public class EditNoteViewController extends AppCompatActivity {
 
                 Uri selectedImage = data.getData();
 
-                note.getText().insert(note.getSelectionStart(), "!["+R.string.new_image+"]("+selectedImage.toString()+")");
+                note.getText().insert(note.getSelectionStart(), "!["+getText(R.string.new_image)+"]("+selectedImage.toString()+")");
             }
         }
     }
