@@ -26,7 +26,5 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
         newNote.write(getContext(), "testing, 1234");
 
-        ((MainActivity) getContext()).loadNote(newNote.getName());
-
     }
 }
