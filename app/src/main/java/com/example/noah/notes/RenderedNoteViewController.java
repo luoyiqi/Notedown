@@ -45,6 +45,7 @@ public class RenderedNoteViewController extends AppCompatActivity {
         noteView.setText(Html.fromHtml(MarkupRenderer.render(readIn), new Html.ImageGetter() {
             @Override public Drawable getDrawable(String source) {
 
+                // Assisted by: http://stackoverflow.com/questions/16718257/retrieve-drawable-resource-from-uri
                 Drawable d;
                 try {
                     Uri yourUri = Uri.parse(source);
