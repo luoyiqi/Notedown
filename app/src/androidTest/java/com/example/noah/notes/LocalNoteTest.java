@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+/* Authored by Noah Ingham */
 
 public class LocalNoteTest extends ApplicationTestCase<Application> {
 

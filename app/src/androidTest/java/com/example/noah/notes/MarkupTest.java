@@ -6,6 +6,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 
 import org.junit.Test;
 
+/* Authored by Noah Ingham */
 
 public class MarkupTest extends ApplicationTestCase<Application> {
 

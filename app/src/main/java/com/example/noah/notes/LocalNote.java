@@ -13,9 +13,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by nosha on 20/03/2016.
- */
+/* Authored by Noah Ingham */
+
 public class LocalNote implements Note {
 
     String filename;

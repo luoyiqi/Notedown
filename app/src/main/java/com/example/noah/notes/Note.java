@@ -5,9 +5,8 @@ import android.content.Context;
 import java.io.IOException;
 import java.io.Serializable;
 
-/**
- * Created by nosha on 20/03/2016.
- */
+/* Authored by Noah Ingham */
+
 public interface Note extends Serializable {
 
     public String read(Context root) throws IOException;

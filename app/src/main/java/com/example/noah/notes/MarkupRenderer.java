@@ -1,8 +1,7 @@
 package com.example.noah.notes;
 
-/**
- * Created by Noah on 27/03/2016.
- */
+/* Authored by Noah Ingham */
+
 public class MarkupRenderer {
 
     /**
@@ -14,6 +13,7 @@ public class MarkupRenderer {
 
         // A simple Regex-based Markdown renderer
         // TODO: Create pairs of patterns and replacements, iterating through the list to call replaceAll on it.
+        // Inspired by: https://gist.github.com/jbroadway/2836900
 
         markup = markup.replaceAll("&nbsp;"," ");
         markup = markup.replaceAll("<br />","\n");

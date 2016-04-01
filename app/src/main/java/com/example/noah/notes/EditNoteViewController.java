@@ -19,6 +19,8 @@ import android.widget.EditText;
 
 import java.io.IOException;
 
+/* Authored by Noah Ingham */
+
 public class EditNoteViewController extends AppCompatActivity {
 
     Note currentNote;

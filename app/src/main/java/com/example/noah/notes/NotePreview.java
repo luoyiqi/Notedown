@@ -13,6 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Authored by Noah Ingham */
+
 public class NotePreview extends ArrayAdapter<String>{
 
     private final Activity context;
@@ -46,6 +48,8 @@ public class NotePreview extends ArrayAdapter<String>{
         names = names(notes);
 
     }
+
+    // Documentation taken from: http://developer.android.com/reference/android/widget/Adapter.html
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();

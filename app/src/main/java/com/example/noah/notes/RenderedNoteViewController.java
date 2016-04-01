@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.InputStream;
 
+/* Authored by Noah Ingham */
+
 public class RenderedNoteViewController extends AppCompatActivity {
 
     TextView noteView;

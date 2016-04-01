@@ -15,12 +15,14 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+/* Authored by Noah Ingham */
+/* Slider library used for deletion: https://github.com/daimajia/AndroidSwipeLayout */
+
 public class MainActivity extends AppCompatActivity {
 
     ListView list;
     Note[] web;
     Map<String,Note> noteMap;
-    Integer[] imageId;
     NotePreview adapter;
 
     /**
