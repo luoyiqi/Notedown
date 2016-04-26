@@ -1,6 +1,10 @@
 `NotesUp`
 =======
 
+**This is the first assignment for ANU's class COMP210 on Software Construction.**
+**The goal was to build a basic note-taking android app.**
+**The assignment was an inidivual task used as an introduction to android app development.**
+
 `NotesUp` is an Android designed to speed up note-taking on small screens by avoiding graphical formatting buttons, while still providing full rich text features.
 
 As its basic features, it supports the functionality to:
