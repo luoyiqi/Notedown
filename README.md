@@ -1,20 +1,25 @@
-`NotesUp`
+`Notedown`
 =======
 
 **This is the first assignment for ANU's class COMP210 on Software Construction.**
 **The goal was to build a basic note-taking android app.**
 **The assignment was an inidivual task used as an introduction to android app development.**
 
-`NotesUp` is an Android designed to speed up note-taking on small screens by avoiding graphical formatting buttons, while still providing full rich text features.
+`Notedown` is an Android designed to speed up note-taking on small screens by avoiding graphical formatting buttons, while still providing full rich text features.
 
-As its basic features, it supports the functionality to:
+Features
+------
+
+The principal feature of the app, Notedown, is it's method of providing easy formatting. Borrowing features from the markup language, MarkDown, it provides quick ways of adding bold text, italic text, headers and images using only the keyboard and stored in the plain-text. See the User Interface section for a preview of this feature.
+
+As its basic features, Nodedown supports the functionality to:
 
 * Create a note note.
 * Save the newly created note.
 * Open and edit previously saved notes, throughout different sessions.
 * Delete saved notes.
 
-In addition to these basic tasks, it supports more advanced features such as 
+In addition to these basic tasks, it also supports the following:
 
 * *italics* and **bold** formatting
 * different sized headers
@@ -25,16 +30,12 @@ In addition to these basic tasks, it supports more advanced features such as
 * a menu for the note editing activity
 * previews for each note on the app home screen
 
-Markup
-------
-
-The principal feature of the app, NoteUp, is it's method of providing easy formatting. Borrowing features from the markup language, MarkDown, it provides quick ways of adding bold text, italic text, headers and images using only the keyboard and stored in the plain-text. See the User Interface section for a preview of this feature.
 
 
-NoteUp User Interface
+Notedown User Interface
 =====================
 
-`NoteUp` is composed of three principal activities: 
+`Notedown` is composed of three principal activities: 
 
 * The first, the home page, previews every note and adds functionality for deleting notes and adding notes. Users can open a note by clicking on its preview and delete it by swiping it to the left.
 
@@ -118,7 +119,7 @@ Missing Features
 Challenges
 ==========
 
-The biggest challenge of designing and developing `NotesUp` was the lack of experience using the Android platform. Having never owned nor extensively used a phone or tablet running Android meant that I didn't know the capabilities and abilities of Android apps. Inspiration from similar pieces of software is usually a key step in my planning and designing, but a lack of access to the platform meant that this was not possible. However, despite this, throughout the development phase of the app the design was able to be adapted to include newly discovered features and abilities.
+The biggest challenge of designing and developing `Notedown` was the lack of experience using the Android platform. Having never owned nor extensively used a phone or tablet running Android meant that I didn't know the capabilities and abilities of Android apps. Inspiration from similar pieces of software is usually a key step in my planning and designing, but a lack of access to the platform meant that this was not possible. However, despite this, throughout the development phase of the app the design was able to be adapted to include newly discovered features and abilities.
 
 
 
@@ -133,7 +134,7 @@ Libraries and resources used
 Testing
 =======
 
-Three different techniques were used for the testing of `NotesUp`:
+Three different techniques were used for the testing of `Notedown`:
 
 
 ### Unit Testing:
@@ -155,7 +156,7 @@ I could not manage to get the framework Espresso to work, so the app doesn't hav
 
 ### Monkey Testing
 
-Monkey tests are an extremely simple and yet effective method of testing the robustness of apps. Generating thousands of random user interactions allows monkey testing to find bugs. Monkey testing was used in the development of `NotesUp` as a simple (client-side) pre-commit hook script running in the background every time new code was committed, ensuring that every new change was tested against this method.
+Monkey tests are an extremely simple and yet effective method of testing the robustness of apps. Generating thousands of random user interactions allows monkey testing to find bugs. Monkey testing was used in the development of `Notedown` as a simple (client-side) pre-commit hook script running in the background every time new code was committed, ensuring that every new change was tested against this method.
 
 ![11](/Previews/11.gif)
 
